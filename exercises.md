@@ -6,7 +6,7 @@
 > Cách trả lời: thay dòng placeholder bằng câu trả lời của bạn.
 > `grade.py` đếm số câu đã trả lời (15 điểm cho 10 câu).
 >
-> Họ và tên: Bùi Đức Thông  Mã học viên: L3A202602931
+> Họ và tên: Bùi Đức Thông  Mã học viên: 2A202602931
 
 ---
 
