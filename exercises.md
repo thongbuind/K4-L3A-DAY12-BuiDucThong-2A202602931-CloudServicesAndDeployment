@@ -3,7 +3,7 @@
 > **Bài làm cá nhân.** Trả lời bằng lời của chính bạn, dựa trên những gì bạn
 > quan sát được khi chạy code — không sao chép đáp án của người khác.
 >
-> Cách trả lời: thay dòng `> *Câu trả lời của bạn*` bằng câu trả lời.
+> Cách trả lời: thay dòng placeholder bằng câu trả lời của bạn.
 > `grade.py` đếm số câu đã trả lời (15 điểm cho 10 câu).
 >
 > Họ và tên: Bùi Đức Thông  Mã học viên: L3A202602931
@@ -125,8 +125,4 @@ Với lịch sử lưu trong Redis, `history_length` tăng đều 0, 2, 4, 6... 
 
 ### Câu 10 — Deploy thật (CP5)
 
-Ghi lại **một** lỗi bạn gặp khi deploy lên cloud (build fail, health check
-timeout, sai REDIS_URL, app không đọc `$PORT`...): thông báo lỗi là gì, bạn
-tìm ra nguyên nhân bằng cách nào, và sửa ra sao?
-
-> *Câu trả lời của bạn*
+Lỗi tôi gặp khi đưa lên cloud: `git push origin main` báo `Permission denied (publickey)` (và sau khi đổi sang HTTPS thì `could not read Username ... Device not configured`), nên Railway không lấy được code từ GitHub. Tôi tìm nguyên nhân bằng `ssh -T git@github.com` với từng key trong `~/.ssh` (đều bị từ chối) và nhận ra máy không có credential GitHub nào dùng được. Cách sửa: cài Railway CLI, đăng nhập bằng `railway login --browserless` (lần đầu mã hết hạn vì tiến trình chờ tự thoát, phải chạy lại nền), rồi `railway up` để deploy thẳng từ thư mục local, Redis thêm bằng `railway add --database redis` và `REDIS_URL=${{Redis.REDIS_URL}}`. Kết quả `/ready` trả `{"status":"ready","redis":true}`.
